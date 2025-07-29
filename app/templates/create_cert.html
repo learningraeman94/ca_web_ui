@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Создать сертификат</h1>
+    <form method="post" action="/create-cert">
+        <div class="mb-3">
+            <label for="common_name" class="form-label">Общее имя</label>
+            <input type="text" class="form-control" id="common_name" name="common_name" required>
+        </div>
+        <div class="mb-3">
+            <label for="ca_cert_id" class="form-label">Root CA</label>
+            <select class="form-select" id="ca_cert_id" name="ca_cert_id" required>
+                {% for ca in root_cas %}
+                    <option value="{{ ca.id }}">{{ ca.common_name }} ({{ ca.cert_path }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="days" class="form-label">Срок действия (дни)</label>
+            <input type="number" class="form-control" id="days" name="days" value="365" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Создать</button>
+    </form>
+{% endblock %}

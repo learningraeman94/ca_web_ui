@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Добро пожаловать в веб-интерфейс CA</h1>
+    {% if message %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endif %}
+    <p>Используйте навигационную панель для управления сертификатами или Root CA.</p>
+{% endblock %}
